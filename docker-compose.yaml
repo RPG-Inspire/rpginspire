@@ -1,0 +1,22 @@
+version: "3"
+services:
+  # the main image, this is the application
+  app:
+    build: .
+    command: bundle exec rails s -b 0.0.0.0
+    ports:
+      - 3000:3000
+    links:
+      - db
+    volumes:
+      - .:/app
+
+  db:
+    image: "postgres:11.5-alpine"
+    environment:
+      POSTGRES_USER: rpginspire
+      POSTGRES_PASSWORD: rpginspire
+      POSTGRES_DB: rpginspire_development
+    ports:
+      - "6000:5432"
+
