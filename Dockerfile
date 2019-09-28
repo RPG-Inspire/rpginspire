@@ -16,5 +16,5 @@ WORKDIR /app
 ADD Gemfile .
 ADD Gemfile.lock .
 
-RUN bundle install
+RUN bundle install --jobs 10
 
