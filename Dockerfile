@@ -18,3 +18,7 @@ ADD Gemfile.lock .
 
 RUN bundle install --jobs 10
 
+ADD package.json .
+ADD package-lock.json .
+RUN yarn install
+
