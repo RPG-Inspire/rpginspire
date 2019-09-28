@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %title Rpginspire
+    = csrf_meta_tags
+    = csp_meta_tag
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css", :rel => "stylesheet"}/
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{:src => "//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"}
+  %body
+    %navbar.navbar.is-black{role: "navigation", "aria-label" => "main navigation"}
+      .container
+        .navbar-brand
+        .navbar-end
+          .navbar-item
+            .buttons
+              - if user_signed_in?
+                %a.button.is-primary(href="#{new_topic_path}")
+                  New topic
+              - else
+                %a.button.is-primary(href="#{new_user_session_path}")
+                  Sign in
+    %p.notice= notice
+    %p.alert= alert
+    .section
+      = yield
+  = yield :extra_js
+

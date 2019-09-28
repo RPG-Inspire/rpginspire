@@ -1,0 +1,41 @@
+.editable {
+  &.medium-editor-placeholder-relative::after {
+    font-style: normal;
+    color: rgba(54,54,54,.3);
+  }
+  h2 {
+    font-size: 1.4rem;
+    line-height: 42px;
+  }
+  h3 {
+    font-size: 1.2rem;
+    line-height: 32px;
+  }
+  p {
+    margin-bottom: 40px;
+  }
+  a {
+    color:black;
+  }
+  a:hover {
+   color:green;
+  }
+  pre {
+    font-family: 'Menlo', monospace;
+    font-size: 15px;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #666;
+  }
+  blockquote {
+    display: block;
+    padding-left: 20px;
+    border-left: 6px solid #df0d32;
+    margin-left: -15px;
+    padding-left: 15px;
+    font-style: italic;
+    color: #555;
+  }
+}

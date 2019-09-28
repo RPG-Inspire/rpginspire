@@ -1,0 +1,10 @@
+- content_for :extra_js do
+  = javascript_include_tag params[:controller]
+
+.container
+  = form_for @topic do |f|
+    .field
+      = f.text_field :title, class: 'input is-large is-borderless', placeholder: "Title"
+    .field
+      = f.text_area :body, class: 'textarea editable is-borderless'
+

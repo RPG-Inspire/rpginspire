@@ -1,0 +1,33 @@
+.container
+  .columns
+    .column.is-one-third
+      - @tags.each do |group, tags|
+        = group
+        %br
+        - tags.each do |tag|
+          %a(href="#")= tag.title
+          %br
+    .columns.is-multiline.is-mobile
+      - @topics.in_groups(2) do |group|
+        .column.is-half.is-full-mobile
+          - group.each do |topic|
+            .card.mb-medium
+              .card-image
+                %figure.image
+                  %img(src="#{topic.image.url}")
+              .card-content
+                .media
+                  .media-left
+                    .hexagon
+                      .triangle
+                      %div= topic.score
+                  .media-content
+                    %p.title.is-5=topic.title
+                    %p.content.is-6.subtitle
+                      by 
+                      %a(href="#") #{topic.user.name},
+                      12:36,
+                      %a(href="#") preview []
+                    %p
+                      %span.tag.is-primary= topic.tag.title
+

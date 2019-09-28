@@ -5,3 +5,47 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Vote.delete_all
+Topic.delete_all
+Tag.delete_all
+User.delete_all
+
+users = [
+  {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name},
+  {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name},
+  {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name},
+  {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name},
+  {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name},
+  {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name},
+  {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name},
+  {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name},
+  {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name},
+  {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name},
+  {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name}
+]
+
+users.each do |user_data|
+  next unless User.find_by(email: user_data[:email]).nil?
+  User.create! user_data
+end
+
+10.times do
+  title = FFaker::HipsterIpsum.word.titleize
+  Tag.find_or_create_by title: title, slug: title.parameterize, tag_type: [:system, :category].sample
+end
+
+30.times do
+  title = FFaker::Book.title
+
+  topic = {
+    title: title,
+    slug: title.parameterize,
+    body: FFaker::HipsterIpsum.paragraphs(rand(1..3)).join("\n"),
+    tag: Tag.all.sample,
+    user: User.all.sample
+  }
+  Topic.find_or_create_by topic
+end
+
+AdminUser.create!(email: 'admin@rpginspire.com', password: 'asdfasdf', password_confirmation: 'asdfasdf') if Rails.env.development?
