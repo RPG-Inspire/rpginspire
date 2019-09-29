@@ -1,0 +1,37 @@
+$radius: 0;
+@import "_colors.scss";
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/base/_all.sass";
+
+@import "bulma/sass/components/card.sass";
+@import "bulma/sass/components/media.sass";
+@import "bulma/sass/components/navbar.sass";
+
+@import "bulma/sass/grid/columns.sass";
+
+// buttons variables
+@import "bulma/sass/elements/button.sass";
+@import "bulma/sass/elements/container.sass";
+@import "bulma/sass/elements/content.sass";
+@import "bulma/sass/elements/image.sass";
+
+// form variables
+$control-border-width: 0px;
+$input-background-color: $white;
+$input-border-color: transparent;
+$input-shadow: none;
+@import "bulma/sass/elements/form.sass";
+@import "bulma/sass/elements/tag.sass";
+
+@import "bulma/sass/layout/section.sass";
+
+.tag.is-primary.is-outlined {
+  @extend .button.is-primary.is-outlined;
+  border: solid 1px;
+}
+a.tag {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
