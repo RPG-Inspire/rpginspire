@@ -6,7 +6,6 @@
     = csp_meta_tag
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %script{:src => "//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"}
   %body
     %navbar.navbar.has-background-dark{role: "navigation", "aria-label" => "main navigation"}
@@ -32,11 +31,20 @@
                 %a.button.is-primary.is-wider(href="#{new_topic_path}")
                   New topic
               - else
-                %a.button.is-primary.is-wider(href="#{new_user_session_path}")
+                %a#signin-btn.button.is-primary.is-wider.modal-button(href="#{new_user_session_path}" aria-haspopup="true" data-target="signin-modal")
                   Sign in
     %p.notice= notice
     %p.alert= alert
     .section
+      .modal.sign-in(id="signin-modal")
+        .modal-background
+        .modal-content
+          .card.has-background-grey-lighter.column.is-8.is-offset-2
+            .card-content
+              = render 'devise/sessions/form'
+        %button.modal-close.is-large{"aria-label" => "close"}
       = yield
+
+  = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   = yield :extra_js
 

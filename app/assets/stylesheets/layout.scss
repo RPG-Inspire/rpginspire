@@ -7,6 +7,7 @@ $radius: 0;
 $card-shadow: none;
 @import "bulma/sass/components/card.sass";
 @import "bulma/sass/components/media.sass";
+@import "bulma/sass/components/modal.sass";
 @import "bulma/sass/components/navbar.sass";
 
 @import "bulma/sass/grid/columns.sass";
@@ -24,6 +25,8 @@ $input-border-color: transparent;
 $input-shadow: none;
 @import "bulma/sass/elements/form.sass";
 @import "bulma/sass/elements/tag.sass";
+
+@import "bulma/sass/form/_all.sass";
 
 @import "bulma/sass/layout/section.sass";
 
@@ -43,7 +46,15 @@ navbar.navbar {
   }
 }
 
-a.button.is-wider {
-  padding-left: 45px;
-  padding-right: 45px;
+.button {
+  text-transform: uppercase;
+  &.is-wider {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
 }
+
+.label {
+  text-transform: uppercase;
+}
+
