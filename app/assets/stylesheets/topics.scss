@@ -2,12 +2,17 @@
 @import 'medium-editor/src/sass/themes/bootstrap.scss';
 @import './components/_editable.scss';
 @import './components/_borderless_input.scss';
+@import '_colors.scss';
 
-.hexagon {
+.square {
   cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: 2px solid $primary;
+  color: $primary;
 
   &:hover, &.active {
-    background-color: #333333;
+    background-color: $primary;
     color: white;
     .triangle {
        border-color: transparent transparent #ffffff transparent;
@@ -19,49 +24,14 @@
   transition: all 300ms ease-in-out;
 }
 
-.hexagon {
-  position: relative;
-  width: 55px;
-  height: 31.75px;
-  background-color: #ffffff;
-  margin: 15.88px 0;
-  border-left: solid 3px #333333;
-  border-right: solid 3px #333333;
-}
-
-.hexagon:before,
-.hexagon:after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  width: 38.89px;
-  height: 38.89px;
-  -webkit-transform: scaleY(0.5774) rotate(-45deg);
-  -ms-transform: scaleY(0.5774) rotate(-45deg);
-  transform: scaleY(0.5774) rotate(-45deg);
-  background-color: inherit;
-  left: 5.0546px;
-}
-
-.hexagon:before {
-  top: -19.4454px;
-  border-top: solid 4.2426px #333333;
-  border-right: solid 4.2426px #333333;
-}
-
-.hexagon:after {
-  bottom: -19.4454px;
-  border-bottom: solid 4.2426px #333333;
-  border-left: solid 4.2426px #333333;
-}
-
-.hexagon div {
+.square span {
   text-align: center;
   z-index: 99;
-  position: relative;
+  display: block;
+  margin-top: 7px;
 }
 
-.hexagon .triangle {
+.square .triangle {
   -webkit-tranition: all 300ms ease-in-out;
   -moz-transition: all 300ms ease-in-out;
   -o-transition: all 300ms ease-in-out;
@@ -70,9 +40,10 @@
   height: 0;
   border-style: solid;
   border-width: 0 7.5px 5px 7.5px;
-  border-color: transparent transparent #000000 transparent;
+  border-color: transparent transparent $primary transparent;
   margin: 0 auto;
-  top: -5px;
+  top: 7px;
+  position: relative;
 }
 
 .card {

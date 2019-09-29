@@ -1,34 +1,35 @@
 .container
   .columns
-    .column.is-one-third
+    .column.is-2
       - @tags.each do |group, tags|
         = group
         %br
         - tags.each do |tag|
-          %a(href="#")= tag.title
+          %a.is-rounded.tag.is-primary.is-outlined(href="#")= tag.title
           %br
-    .columns.is-multiline.is-mobile
-      - @topics.in_groups(2) do |group|
-        .column.is-half.is-full-mobile
-          - group.each do |topic|
-            .card.mb-medium
-              .card-image
-                %figure.image
-                  %img(src="#{topic.image.url}")
-              .card-content
-                .media
-                  .media-left
-                    .hexagon
-                      .triangle
-                      %div= topic.score
-                  .media-content
-                    %p.title.is-5=topic.title
-                    %p.content.is-6.subtitle
-                      by 
-                      %a(href="#") #{topic.user.name},
-                      12:36,
-                      %a(href="#") preview []
-                    %p
-                      - topic.tags.each do |tag|
-                      %span.tag.is-primary= tag
+    .column.is-10
+      .columns.is-multiline.is-mobile
+        - @topics.in_groups(2) do |group|
+          .column.is-half.is-full-mobile
+            - group.each do |topic|
+              .card.mb-medium
+                .card-image
+                  %figure.image
+                    %img(src="#{topic.image.url}")
+                .card-content
+                  .media
+                    .media-left
+                      .square
+                        .triangle
+                        %span= topic.score
+                    .media-content
+                      %p.title.is-5=topic.title
+                      %p.content.is-6.subtitle
+                        by
+                        %a(href="#") #{topic.user.name},
+                        12:36,
+                        %a(href="#") preview []
+                      %p.tags
+                        - topic.tags.each do |tag|
+                          %span.tag.is-primary.is-rounded= tag
 
