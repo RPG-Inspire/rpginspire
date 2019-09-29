@@ -3,6 +3,8 @@ $radius: 0;
 @import "bulma/sass/utilities/_all.sass";
 @import "bulma/sass/base/_all.sass";
 
+// cards variables
+$card-shadow: none;
 @import "bulma/sass/components/card.sass";
 @import "bulma/sass/components/media.sass";
 @import "bulma/sass/components/navbar.sass";
@@ -39,4 +41,9 @@ navbar.navbar {
   a {
     text-transform: uppercase;
   }
+}
+
+a.button.is-wider {
+  padding-left: 45px;
+  padding-right: 45px;
 }
