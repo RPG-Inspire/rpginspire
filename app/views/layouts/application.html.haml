@@ -16,6 +16,12 @@
             = image_tag 'logo.svg'
         .navbar-end
           .navbar-item
+            %a.has-text-white(href="https://discordapp.com/invite/quv9gsM" target="_blank") Discord
+          .navbar-item
+            %a.has-text-white(href="https://twitter.com/rpg_inspire" target="_blank") Twitter
+          .navbar-item
+            %a.has-text-white(href="https://www.instagram.com/rpginspire/" target="_blank") Instagram
+          .navbar-item
             .buttons
               - if user_signed_in?
                 %a.button.is-primary(href="#{new_topic_path}")
