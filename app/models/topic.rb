@@ -2,6 +2,7 @@ class Topic < ApplicationRecord
   belongs_to :tag
   belongs_to :user
   has_many :votes
+  has_many :comments
 
   mount_uploader :image, TopicImageUploader
 
