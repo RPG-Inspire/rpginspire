@@ -1,21 +1,26 @@
-.editable {
+article.article, .editable {
   &.medium-editor-placeholder-relative::after {
     font-style: normal;
     color: rgba(54,54,54,.3);
   }
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 25px;
+  }
   h2 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     line-height: 42px;
+    margin-bottom: 15px;
   }
   h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     line-height: 32px;
+    margin-bottom: 10px;
   }
   p {
     margin-bottom: 40px;
-  }
-  a {
-    color:black;
   }
   a:hover {
    color:green;
@@ -37,5 +42,26 @@
     padding-left: 15px;
     font-style: italic;
     color: #555;
+  }
+  p {
+    margin: 0 0 20px 0;
+  }
+}
+
+.article {
+  .meta {
+    margin: 0 0 30px 0;
+  }
+  img.cover {
+    margin-bottom: 15px;
+  }
+  .comments {
+    margin-top: 40px 0;
+    .comment {
+      margin: 20px 0;
+      .media-content {
+        padding: 20px;
+      }
+    }
   }
 }

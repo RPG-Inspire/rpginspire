@@ -1,0 +1,44 @@
+%article.article.container
+  .columns
+    .column.is-6.is-offset-3
+
+      %h1= @topic.title
+      %section.meta
+        .media
+          .media-left
+            .square
+              .triangle
+              %span= @topic.score
+          .media-left
+            .icon.has-text-grey-dark.is-large
+              %i.fas.fa-user.fa-3x
+          .media-content
+            %a.is-primary(href="#")= @topic.user.name
+            %br
+            =l @topic.created_at.to_date, format: :short
+          - unless @topic.link.blank?
+            .media-right
+              %a.button.is-primary.is-wider(href="#{@topic.link}" target="_blank")
+                Source
+      - unless @topic.image.file.nil?
+        %img.cover(src="#{@topic.image.url}")
+      = simple_format @topic.body
+
+      %section.comments
+        .media
+          .media-left
+            .icon.has-text-grey-dark.is-large
+              %i.fas.fa-comment.fa-3x
+          .media-content
+            %a.button.is-fullwidth.is-primary.has-initial-transformation.is-large.modal-button(href="#{new_user_session_path}" aria-haspopup="true" data-target="signin-modal")
+              Login to comment
+
+        - @topic.comments.each do |comment|
+          %section.media.comment
+            .media-left
+              .icon.has-text-grey-dark.is-large
+                %i.fas.fa-user.fa-3x
+              %small.time=l comment.created_at.to_date, format: :short
+            .media-content.has-background-light
+              %a(href="#")#{comment.user.name}:
+              = FFaker::HipsterIpsum.paragraph
