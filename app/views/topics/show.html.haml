@@ -18,7 +18,7 @@
             =l @topic.created_at.to_date, format: :short
           - unless @topic.link.blank?
             .media-right
-              %a.button.is-primary.is-wider(href="#{@topic.link}" target="_blank")
+              %a.button.is-primary.is-family-secondary.is-wider(href="#{@topic.link}" target="_blank")
                 Source
       - unless @topic.image.file.nil?
         %img.cover(src="#{@topic.image.url}")

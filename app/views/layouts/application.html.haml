@@ -28,10 +28,10 @@
           .navbar-item
             .buttons
               - if user_signed_in?
-                %a.button.is-primary.is-wider(href="#{new_topic_path}")
+                %a.button.is-primary.is-wider.is-family-secondary(href="#{new_topic_path}")
                   New topic
               - else
-                %a#signin-btn.button.is-primary.is-wider.modal-button(href="#{new_user_session_path}" aria-haspopup="true" data-target="signin-modal")
+                %a#signin-btn.button.is-primary.is-wider.modal-button.is-family-secondary(href="#{new_user_session_path}" aria-haspopup="true" data-target="signin-modal")
                   Sign in
     %p.notice= notice
     %p.alert= alert
