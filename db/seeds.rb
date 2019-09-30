@@ -10,6 +10,7 @@ Vote.delete_all
 Topic.delete_all
 Tag.delete_all
 User.delete_all
+AdminUser.delete_all
 
 users = [
   {email: FFaker::Internet.email, password: 'asdfasdf', name: FFaker::Name.name},
@@ -46,6 +47,15 @@ end
   }
   topic = Topic.find_or_create_by topic
   topic.tags << Tag.all.sample
+
+  rand(15).times do
+    comment = {
+      body: FFaker::HipsterIpsum.paragraph,
+      topic: topic,
+      user: User.all.sample
+    }
+    Comment.find_or_create_by(comment)
+  end
 end
 
 AdminUser.create!(email: 'admin@rpginspire.com', password: 'asdfasdf', password_confirmation: 'asdfasdf') if Rails.env.development?
