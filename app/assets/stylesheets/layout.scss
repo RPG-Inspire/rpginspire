@@ -62,3 +62,9 @@ navbar.navbar {
 .has-initial-transformation {
   text-transform: initial;
 }
+
+.modal-content.is-fullwidth {
+  width: 100%;
+  max-width: 100%;
+  margin: 100px auto 0 auto;
+}

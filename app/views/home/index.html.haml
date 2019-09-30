@@ -17,7 +17,7 @@
                   - unless topic.image.file.nil?
                     %figure.image
                       - if topic.link.blank?
-                        %a(href="#{topic_path(topic.slug)}")
+                        %a.modal-button(href="#{topic_path(topic.slug)}" data-lazy-loaded="true" data-target="lazy-loaded-modal")
                           %img(src="#{topic.image.url}")
                       - else
                         %a(href="#{topic.link}" target="_blank")
@@ -31,14 +31,14 @@
                     .media-content
                       %p.title.is-5
                         - if topic.link.blank?
-                          %a(href="#{topic_path(topic.slug)}")=topic.title
+                          %a.modal-button(href="#{topic_path(topic.slug)}" data-lazy-loaded="true" data-target="lazy-loaded-modal")=topic.title
                         - else
                           %a(href="#{topic.link}" target="_blank")=topic.title
                       %p.content.is-6.subtitle
                         by
                         %a(href="#") #{topic.user.name},
                         12:36,
-                        %a(href="#{topic_path(topic.slug)}") preview []
+                        %a.modal-button(href="#{topic_path(topic.slug)}" data-lazy-loaded="true" data-target="lazy-loaded-modal") preview []
                       %p.tags
                         - topic.tags.each do |tag|
                           %span.tag.is-primary.is-rounded= tag
