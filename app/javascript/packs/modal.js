@@ -5,22 +5,6 @@ var $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .de
 var originalSlug = window.location['pathname']
 var shouldReturnSlug = false
 
-function loadXMLDoc(url, fn) {
-  var xmlhttp = new XMLHttpRequest()
-  var format = '.js'
-
-  xmlhttp.onreadystatechange = function() {
-    fn(xmlhttp)
-  }
-
-  xmlhttp.open("GET", url+format, true)
-  xmlhttp.send()
-}
-
-function getAll(selector) {
-  return Array.prototype.slice.call(document.querySelectorAll(selector), 0)
-}
-
 function returnOriginalSlug() {
   modifySlug(originalSlug)
 }

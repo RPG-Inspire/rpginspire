@@ -1,0 +1,34 @@
+- topics.to_a.in_groups(2) do |group|
+  .column.is-half.is-full-mobile
+    - group.each do |topic|
+      .card.topic-card
+        .card-image
+          - unless topic.image.file.nil?
+            %figure.image
+              - if topic.link.blank?
+                %a.modal-button(href="#{topic_path(topic.slug)}" data-lazy-loaded="true" data-target="lazy-loaded-modal")
+                  %img(src="#{topic.image.url}")
+              - else
+                %a(href="#{topic.link}" target="_blank")
+                  %img(src="#{topic.image.url}")
+        .card-content
+          .media
+            .media-left
+              .square
+                .triangle
+                %span= topic.score
+            .media-content
+              %p.title.is-5
+                - if topic.link.blank?
+                  %a.modal-button(href="#{topic_path(topic.slug)}" data-lazy-loaded="true" data-target="lazy-loaded-modal")=topic.title
+                - else
+                  %a(href="#{topic.link}" target="_blank")=topic.title
+              %p.content.is-6.subtitle
+                by
+                %a(href="#") #{topic.user.name},
+                12:36,
+                %a.modal-button(href="#{topic_path(topic.slug)}" data-lazy-loaded="true" data-target="lazy-loaded-modal") preview []
+              %p.tags
+                - topic.tags.each do |tag|
+                  %span.tag.is-primary.is-rounded= tag
+

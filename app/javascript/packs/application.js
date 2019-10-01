@@ -5,7 +5,9 @@
 
 require("@rails/activestorage").start()
 require("channels")
+require("./helpers.js")
 require("./modal.js")
+require("./infinite_scroll.js")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
