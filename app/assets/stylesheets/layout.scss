@@ -54,6 +54,33 @@ navbar.navbar {
     padding-left: 45px;
     padding-right: 45px;
   }
+  $twitter-color: #009cde;
+  $twitter-color-invert: #ffffff;
+  &.is-twitter {
+    background-color: $twitter-color;
+    border-color: transparent;
+    color: #fff;
+    &:hover,
+    &.is-hovered {
+      background-color: darken($twitter-color, 2.5%);
+      border-color: transparent;
+      color: $twitter-color-invert;
+    }
+    &:focus,
+    &.is-focused {
+      border-color: transparent;
+      color: $twitter-color-invert;
+      &:not(:active) {
+        box-shadow: $button-focus-box-shadow-size rgba($twitter-color, 0.25);
+      }
+    }
+    &:active,
+    &.is-active {
+      background-color: darken($twitter-color, 5%);
+      border-color: transparent;
+      color: $twitter-color-invert;
+    }
+  }
 }
 
 .label {
