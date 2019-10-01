@@ -1,6 +1,6 @@
 .container
   .columns
-    .column.is-2.is-clipped
+    .column.is-2
       - @tags.each do |group, tags|
         = group
         %br
@@ -8,6 +8,9 @@
           %a.is-rounded.tag.is-primary.is-outlined(href="#")= tag.title
           %br
     .column.is-10
-      #infinite-content.columns.is-multiline.is-gapless(data-next-page="#{@topics.next_page}" data-url="#{topics_path}")
-        = render 'topics/list', topics: @topics
+      .columns.is-multiline
+        = render 'list', topics: @topics
+      .columns.is-centered
+        .is-12
+          = paginate @topics
 
