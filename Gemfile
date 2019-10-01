@@ -16,6 +16,8 @@ gem "haml-rails", "~> 2.0"
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem "skylight"
+
 gem 'carrierwave', '~> 2.0'
 
 gem 'activeadmin'
