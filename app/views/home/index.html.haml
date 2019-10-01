@@ -9,7 +9,7 @@
           %br
     .column.is-10
       .columns.is-multiline.is-mobile
-        - @topics.in_groups(2) do |group|
+        - @topics.to_a.in_groups(2) do |group|
           .column.is-half.is-full-mobile
             - group.each do |topic|
               .card.mb-medium
@@ -42,3 +42,6 @@
                       %p.tags
                         %span.tag.is-primary.is-rounded= topic.tag.title
 
+      .columns.is-centered
+        .is-12
+          = paginate @topics
