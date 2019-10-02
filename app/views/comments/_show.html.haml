@@ -1,0 +1,8 @@
+%section.media.comment
+  .media-left
+    .icon.has-text-grey-dark.is-large
+      %i.icon-comment.icon-3x
+    %small.time=l comment.created_at.to_date, format: :short
+  .media-content.has-background-light
+    %a(href="#")#{comment.user.name}:
+    = comment.body

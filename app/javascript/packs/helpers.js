@@ -14,11 +14,11 @@ window.getAll = function(selector) {
   return Array.prototype.slice.call(document.querySelectorAll(selector), 0)
 }
 window.addEvent = function(el, type, handler) {
-  if (el.attachEvent) el.attachEvent('on'+type, handler); else el.addEventListener(type, handler);
+  if (el.attachEvent) el.attachEvent('on'+type, handler); else el.addEventListener(type, handler)
   return handler
 }
 window.removeEvent = function(el, type, handler) {
-  if (el.detachEvent) el.detachEvent('on'+type, handler); else el.removeEventListener(type, handler);
+  if (el.detachEvent) el.detachEvent('on'+type, handler); else el.removeEventListener(type, handler)
 }
 
 window.csrfObj = function() {
@@ -28,5 +28,29 @@ window.csrfObj = function() {
     obj = {}
   obj[param] = token
   return obj
+}
+
+window.serializeForm = function(form) {
+  var field, l = [],
+    s = {}
+  if (typeof form == 'object' && form.nodeName == "FORM") {
+    var len = form.elements.length
+    for (var i=0; i<len; i++) {
+      field = form.elements[i]
+      if (field.name && !field.disabled && field.type != 'file' && field.type != 'reset' && field.type != 'submit' && field.type != 'button') {
+        if (field.type == 'select-multiple') {
+          l = form.elements[i].options.length
+          for (j=0; j<l; j++) {
+            if(field.options[j].selected)
+              s[field.name] = { name: field.name, value: field.options[j].value }
+            }
+        } else if ((field.type != 'checkbox' && field.type != 'radio') || field.checked) {
+            s[field.name] = { name: field.name, value: field.value }
+        }
+      }
+    }
+  }
+
+  return s
 }
 

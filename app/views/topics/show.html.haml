@@ -1,4 +1,4 @@
-%article.article.container
+%article.article.container(data-topic-id="#{@topic.id}")
   .columns
     .column.is-6.is-offset-3
 
@@ -28,15 +28,11 @@
             .icon.has-text-grey-dark.is-large
               %i.icon-comment.icon-3x
           .media-content
-            %a.button.is-fullwidth.is-primary.has-initial-transformation.is-large.modal-button(href="#{new_user_session_path}" aria-haspopup="true" data-target="signin-modal")
-              Login to comment
+            - if user_signed_in?
+              = render 'comments/form', comment: Comment.new(topic: @topic)
+            - else
+              %a.button.is-fullwidth.is-primary.has-initial-transformation.is-large.modal-button(href="#{new_user_session_path}" aria-haspopup="true" data-target="signin-modal")
+                Login to comment
 
         - @topic.comments.each do |comment|
-          %section.media.comment
-            .media-left
-              .icon.has-text-grey-dark.is-large
-                %i.icon-comment.icon-3x
-              %small.time=l comment.created_at.to_date, format: :short
-            .media-content.has-background-light
-              %a(href="#")#{comment.user.name}:
-              = FFaker::HipsterIpsum.paragraph
+          = render 'comments/show', comment: comment

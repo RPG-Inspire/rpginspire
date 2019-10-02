@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   root to: "home#index"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :topics, only: [:show, :new, :create, :index]
-  namespace :api do
+  namespace :api, defaults: { format: 'json' } do
+    resources :comments, only: [:create]
     resources :topics, only: [] do
       patch :upvote, on: :member
       patch :remove_upvote, on: :member
