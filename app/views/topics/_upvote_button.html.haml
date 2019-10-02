@@ -1,0 +1,8 @@
+- if user_signed_in?
+  .square.upvote(data-topic-id="#{topic.id}" data-active="#{topic.has_upvote_from(current_user.id)}")
+    .triangle
+    %span= topic.score
+- else
+  .square.modal-button(href="#{new_user_session_path}" aria-haspopup="true" data-target="signin-modal")
+    .triangle
+    %span= topic.score

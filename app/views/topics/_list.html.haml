@@ -14,9 +14,7 @@
         .card-content
           .media
             .media-left
-              .square
-                .triangle
-                %span= topic.score
+              = render partial: 'topics/upvote_button', locals: {topic: topic}, formats: [:html]
             .media-content
               %p.title.is-5
                 - if topic.link.blank?

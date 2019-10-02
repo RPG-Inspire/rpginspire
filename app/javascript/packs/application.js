@@ -6,6 +6,7 @@
 require("@rails/activestorage").start()
 require("channels")
 require("./helpers.js")
+require("./upvote.js")
 require("./modal.js")
 require("./infinite_scroll.js")
 
