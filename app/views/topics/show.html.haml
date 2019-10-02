@@ -6,9 +6,7 @@
       %section.meta
         .media
           .media-left
-            .square
-              .triangle
-              %span= @topic.score
+            = render 'upvote_button', topic: @topic
           .media-left
             .icon.has-text-grey-dark.is-large
               %i.icon-user.icon-3x

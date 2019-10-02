@@ -1,11 +1,8 @@
-class Api::TopicsController < ApplicationController
-#  before_action :authenticate_user!
-  skip_before_action :verify_authenticity_token
+class Api::TopicsController < Api::BaseController
 
   def upvote
     topic = Topic.find_by_id! params[:id]
-    user = User.find(rand(1..User.count))
-    vote = Actions::Voting.upvote_topic(topic, user)
+    vote = Actions::Voting.upvote_topic(topic, current_user)
 
     if vote.save
       render json: vote.to_json

@@ -14,9 +14,7 @@
         .card-content
           .media
             .media-left
-              .square
-                .triangle
-                %span= topic.score
+              = render partial: 'topics/upvote_button', locals: {topic: topic}, formats: [:html]
             .media-content
               %p.title.is-5
                 - if topic.link.blank?
@@ -30,3 +28,4 @@
                 %a.modal-button(href="#{topic_path(topic.slug)}" data-lazy-loaded="true" data-target="lazy-loaded-modal") preview []
               %p.tags
                 %span.tag.is-primary.is-rounded= topic.tag.title
+

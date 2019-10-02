@@ -9,4 +9,9 @@ class Topic < ApplicationRecord
   def score
     votes.sum(:vote_type)
   end
+
+  def has_upvote_from(user_id)
+    votes.upvote_from_user(user_id).exists?
+  end
 end
+
