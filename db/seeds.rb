@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Comment.delete_all
 Vote.delete_all
 Topic.delete_all
 Tag.delete_all
@@ -33,7 +34,7 @@ end
 
 10.times do
   title = FFaker::HipsterIpsum.word.titleize
-  Tag.find_or_create_by title: title, slug: title.parameterize, tag_type: [:system, :category].sample
+  Tag.find_or_create_by title: title, slug: title.parameterize, tag_type: [:category, :tag].sample
 end
 
 30.times do

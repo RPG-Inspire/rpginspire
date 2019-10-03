@@ -2,9 +2,27 @@
   = javascript_include_tag params[:controller]
 
 .container
-  = form_for @topic do |f|
-    .field
-      = f.text_field :title, class: 'input is-large is-borderless', placeholder: "Title"
-    .field
-      = f.text_area :body, class: 'textarea editable is-borderless'
+  .columns.is-centered
+    .column.is-6
+      = form_for @topic, as: :topic, url: topics_path do |f|
+        .topic-tab.tabs.is-fullwidth
+          %ul
+            %li.is-active
+              %a Submit a link
+            %li
+              %a Create post
+        .field
+          .label=f.label :link
+          = f.text_field :link, class: 'input is-borderless'
+        .field
+          .label=f.label :title
+          = f.text_field :title, class: 'input is-borderless'
+        .field
+          .label=f.label :own_creative_rights, 'Do you own the creative rights to this piece?'
+          = f.text_field :own_creative_rights, class: 'input is-borderless'
+        .field
+          .label=f.label :body, 'Content'
+          = f.text_area :body, class: 'textarea editable is-borderless'
+
+        = f.submit :submit, class: 'button is-primary is-family-secondary is-pulled-right'
 

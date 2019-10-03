@@ -1,0 +1,28 @@
+- content_for :extra_js do
+  = javascript_include_tag params[:controller]
+
+.container
+  .columns.is-centered
+    .column.is-6.tags-selector
+      = form_for @topic_wizard, as: :topic_wizard, url: validate_step_topics_path do |f|
+        = hidden_field_tag :current_step, 'step2'
+        - @tags.each do |tag_type,tags|
+
+          %label.is-uppercase.has-text-weight-bold=tag_type
+          - tags.each_slice(3) do |group|
+            .columns
+              - group.each do |tag|
+                .column.is-one-third
+                  %label.checkbox
+                    %input.checkbox.is-borderless(type="checkbox" name="topic_wizard[tags]")
+                    = tag.title
+        .buttons.is-pulled-right
+          - if !user_signed_in?
+            - extra_class = ' modal-button'
+          - else
+            - extra_class = ''
+
+          = f.submit 'Skip step', class: "button is-light is-family-secondary#{extra_class}", "aria-haspopup" => "true", "data-target" => "signin-modal"
+          = f.submit 'Submit', class: "button is-family-secondary is-dark#{extra_class}", disabled: true, "aria-haspopup" => "true", "data-target" => "signin-modal", "data-enabler" => 'true'
+
+

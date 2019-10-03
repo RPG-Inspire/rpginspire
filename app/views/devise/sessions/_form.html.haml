@@ -1,17 +1,28 @@
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    .label= f.label :email
-    = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
-  .field
-    .label= f.label :password
-    = f.password_field :password, autocomplete: "current-password", class: "input"
-  - if devise_mapping.rememberable?
+.tabs.is-fullwidth
+  %ul
+    %li.is-active
+      %a Sign in
+    %li
+      %a Create Account
+.signin
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Sign in", class: "button is-primary is-fullwidth is-family-secondary"
-= render "devise/shared/links"
-%a.button.is-twitter.is-fullwidth.is-family-secondary(href="#")
-  Sign in with Twitter
+      = f.label :email, class: 'label'
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
+    .field
+      = f.label :password, class: 'label'
+      = f.password_field :password, autocomplete: "current-password", class: "input"
+    - if devise_mapping.rememberable?
+      .field
+        = f.check_box :remember_me
+        = f.label :remember_me
+    .actions
+      = f.submit "Sign in", class: "button is-primary is-fullwidth is-family-secondary"
+      .has-text-centered.is-size-7
+        /%a(href="#") Can't login?
+      %br
+      %a.button.is-twitter.is-fullwidth.is-family-secondary(href="#")
+        Sign in with Twitter
+  .signup
+    = render 'devise/registrations/form'
 

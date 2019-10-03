@@ -27,12 +27,8 @@
             %a.has-text-white.is-size-7.has-text-weight-bold(href="https://www.instagram.com/rpginspire/" target="_blank") Instagram
           .navbar-item
             .buttons
-              - if user_signed_in?
-                %a.button.is-primary.is-wider.is-family-secondary(href="#{new_topic_path}")
-                  New topic
-              - else
-                %a#signin-btn.button.is-primary.is-wider.modal-button.is-family-secondary(href="#{new_user_session_path}" aria-haspopup="true" data-target="signin-modal")
-                  Sign in
+              %a.button.is-primary.is-wider.is-family-secondary(href="#{new_topic_path}")
+                New post
     %p.notice= notice
     %p.alert= alert
     .section
