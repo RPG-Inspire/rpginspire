@@ -5,7 +5,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all'
     %script{:src => "//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"}
   %body
     %navbar.navbar.has-background-dark{role: "navigation", "aria-label" => "main navigation"}
@@ -47,6 +47,6 @@
         .card.has-background-grey-lighter
           %button.modal-close.is-large{"aria-label" => "close"}
           .card-content#lazy-loaded-content
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', async: true
     = yield :extra_js
 
