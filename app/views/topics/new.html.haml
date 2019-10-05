@@ -26,3 +26,5 @@
 
         = f.submit :submit, class: 'button is-primary is-family-secondary is-pulled-right'
 
+= content_for :extra_js do
+  %script{:src => "//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js", async: true}
