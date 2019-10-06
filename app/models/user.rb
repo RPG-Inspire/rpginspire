@@ -3,4 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  before_create :set_name
+
+  def set_name
+    self.name = self.email.split('@').first if self.name.nil?
+  end
 end
