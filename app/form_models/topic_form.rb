@@ -5,8 +5,9 @@ class TopicForm
 
   delegate *::Topic.attribute_names.map { |attr| [attr, "#{attr}="] }.flatten, to: :topic
 
-  def initialize(topic_attributes, user = nil)
-    @topic = Topic.new(topic_attributes)
+  def initialize(topic_attributes, user = nil, topic = nil)
+    @topic = topic || Topic.new
+    @topic.attributes = topic_attributes
     @topic.user = user
   end
 end

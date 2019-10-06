@@ -4,8 +4,7 @@
 .container
   .columns.is-centered
     .column.is-6.tags-selector
-      = form_for @topic_wizard, as: :topic_wizard, url: validate_step_topics_path do |f|
-        = hidden_field_tag :current_step, 'step2'
+      = form_for @topic, as: :topic, url: topic_path(@topic.id), method: :patch do |f|
         - @tags.each do |tag_type,tags|
 
           %label.is-uppercase.has-text-weight-bold=tag_type
@@ -14,7 +13,7 @@
               - group.each do |tag|
                 .column.is-one-third
                   %label.checkbox
-                    %input.checkbox.is-borderless(type="checkbox" name="topic_wizard[tags]")
+                    %input.checkbox.is-borderless(type="checkbox" name="topic[tag_ids][]" value="#{tag.id}")
                     = tag.title
         .buttons.is-pulled-right
           - if !user_signed_in?
@@ -24,5 +23,4 @@
 
           = f.submit 'Skip step', class: "button is-light is-family-secondary#{extra_class}", "aria-haspopup" => "true", "data-target" => "signin-modal"
           = f.submit 'Submit', class: "button is-family-secondary is-dark#{extra_class}", disabled: true, "aria-haspopup" => "true", "data-target" => "signin-modal", "data-enabler" => 'true'
-
 

@@ -20,6 +20,16 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
   end
 
+  def update
+    @topic = TopicForm.new(topic_params, current_user, Topic.find(params[:id]))
+
+    if @topic.valid? && @topic.topic.save
+      redirect_to :root, notice: 'Your topic has been published successfully!'
+    else
+      render :new
+    end
+  end
+
   def create
     @topic = TopicForm.new(topic_params, current_user)
 
@@ -34,7 +44,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:link, :title, :own_creative_rights, :body)
+    params.require(:topic).permit(:link, :title, :own_creative_rights, :body, tag_ids: [])
   end
 end
 
