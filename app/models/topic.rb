@@ -10,12 +10,18 @@ class Topic < ApplicationRecord
 
   mount_uploader :image, TopicImageUploader
 
+  before_create :set_slug
+
   def score
     votes.sum(:vote_type)
   end
 
   def has_upvote_from(user_id)
     votes.upvote_from_user(user_id).exists?
+  end
+
+  def set_slug
+    self.slug = self.title.parameterize if self.slug.nil?
   end
 end
 
