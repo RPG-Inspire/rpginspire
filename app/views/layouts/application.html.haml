@@ -28,8 +28,10 @@
             .buttons
               %a.button.is-primary.is-wider.is-family-secondary(href="#{new_topic_path}")
                 New post
-    %p.notice= notice
-    %p.alert= alert
+    - unless notice.nil?
+      .notification.is-primary= notice
+    - unless alert.nil?
+      .notification.is-warning= alert
     .section
       .modal.sign-in(id="signin-modal")
         .modal-background
