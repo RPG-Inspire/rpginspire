@@ -1,4 +1,5 @@
 class Topic < ApplicationRecord
+  default_scope -> { where.not(user_id: nil) }
   has_and_belongs_to_many :tags
   belongs_to :user, optional: true
   has_many :votes
