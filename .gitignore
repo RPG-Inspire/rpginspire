@@ -24,6 +24,7 @@
 *.swp
 /public/assets
 /public/uploads
+/public/development
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
