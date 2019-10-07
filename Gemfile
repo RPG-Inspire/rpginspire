@@ -61,6 +61,11 @@ group :test do
   gem 'webdrivers'
 end
 
+group :production do
+  gem 'fog-aws'
+  gem 'asset_sync'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data'
 
