@@ -13,6 +13,7 @@
  *= require layout.scss
  *= require topics.scss
  *= require components/_article.scss
+ *= require components/_masonry.scss
  *= require_self
  */
 
