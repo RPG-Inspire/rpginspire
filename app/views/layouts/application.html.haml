@@ -40,13 +40,14 @@
     - unless alert.nil?
       .notification.is-warning= alert
     .section
-      .modal.sign-in(id="signin-modal")
-        .modal-background
-        .modal-content
-          .card.has-background-grey-lighter.column.is-8.is-offset-2
-            .card-content
-              = render 'devise/sessions/form'
-        %button.modal-close.is-large{"aria-label" => "close"}
+      - unless user_signed_in? || controller_name == 'sessions'
+        .modal.sign-in(id="signin-modal")
+          .modal-background
+          .modal-content
+            .card.has-background-grey-lighter.column.is-8.is-offset-2
+              .card-content
+                = render 'devise/sessions/form'
+          %button.modal-close.is-large{"aria-label" => "close"}
       = yield
 
     .modal#lazy-loaded-modal(data-is-lazy="true")

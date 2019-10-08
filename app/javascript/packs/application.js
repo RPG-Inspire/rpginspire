@@ -9,6 +9,7 @@ require("./helpers.js")
 require("./upvote.js")
 require("./comment.js")
 require("./modal.js")
+require("./tab.js")
 require("./infinite_scroll.js")
 
 

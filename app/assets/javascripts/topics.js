@@ -24,15 +24,6 @@ if (typeof(MediumEditor) !== "undefined") {
   })
 }
 
-$tabButtons = getAll('.topic-tab.tabs a')
-if ($tabButtons.length > 0) {
-  $tabButtons.forEach(function ($el) {
-    $el.addEventListener('click', function (e) {
-      e.preventDefault()
-    })
-  })
-}
-
 $tagboxes = getAll('.tags-selector input.checkbox')
 if ($tagboxes.length > 0) {
   $tagboxes.forEach(function ($el) {
