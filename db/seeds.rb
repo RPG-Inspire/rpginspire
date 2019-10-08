@@ -37,7 +37,7 @@ end
   Tag.find_or_create_by title: title, slug: title.parameterize, tag_type: [:category, :tag].sample
 end
 
-30.times do
+50.times do
   title = FFaker::Book.title
 
   topic = {
