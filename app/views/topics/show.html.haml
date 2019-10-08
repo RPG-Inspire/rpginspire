@@ -19,7 +19,7 @@
               %a.button.is-primary.is-family-secondary.is-wider(href="#{@topic.link}" target="_blank")
                 Source
       - unless @topic.image.file.nil?
-        %img.cover(src="#{@topic.image.url}")
+        %img.cover(src="#{@topic.image.url}" alt="#{@topic.title}")
       = simple_format @topic.body
 
       %section.comments

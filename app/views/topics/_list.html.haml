@@ -5,10 +5,10 @@
         %figure.image
           - if topic.link.blank?
             %a.modal-button(href="#{topic_path(topic.slug)}" data-lazy-loaded="true" data-target="lazy-loaded-modal")
-              %img(src="#{topic.image.card_preview.url}")
+              %img(src="#{topic.image.card_preview.url}" alt="#{topic.title}")
           - else
             %a(href="#{topic.link}" target="_blank")
-              %img(src="#{topic.image.card_preview.url}")
+              %img(src="#{topic.image.card_preview.url}" alt="#{topic.title}")
     .card-content
       .media
         .media-left
