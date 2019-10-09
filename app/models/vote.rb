@@ -19,5 +19,9 @@ class Vote < ApplicationRecord
   def reclaim_vote
     self.vote_type = :neutral
   end
+
+  def vote_weight
+    self.vote_type == "upvote" ? 1 : 0
+  end
 end
 

@@ -13,7 +13,7 @@ class Topic < ApplicationRecord
   before_create :set_slug
 
   def score
-    votes.sum(:vote_type)
+    votes.inject(0) { |sum, vote| sum + vote.vote_weight }
   end
 
   def has_upvote_from(user_id)

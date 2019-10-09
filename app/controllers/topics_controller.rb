@@ -3,8 +3,8 @@ class TopicsController < ApplicationController
   before_action :authenticate_user!, only: [:edit_tag]
 
   def index
-    @tags = Tag.all.order(title: :asc).group_by { |i| i.tag_type }
-    @topics = Topic.order(id: :desc).page(params[:page]).per(20)
+    @tags = Tag.joins(:topics).order(title: :asc).uniq.group_by { |i| i.tag_type }
+    @topics = Topic.includes(:tags, :votes, :user).order(id: :desc).page(params[:page]).per(20)
   end
 
   def show
