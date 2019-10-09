@@ -44,7 +44,8 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:link, :title, :own_creative_rights, :body, tag_ids: [])
+    return {} if params[:topic].nil?
+    params.require(:topic).permit(:link, :title, :own_creative_rights, :body, :image, tag_ids: [])
   end
 end
 

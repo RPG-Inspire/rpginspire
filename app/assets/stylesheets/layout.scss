@@ -25,7 +25,15 @@ $card-shadow: none;
 // form variables
 @import "bulma/sass/elements/tag.sass";
 
+$file-name-border-color: $white;
 @import "bulma/sass/form/_all.sass";
+.file-name {
+  background-color: $white;
+}
+.file-cta {
+  padding-right: 3.5em;
+  padding-left: 3.5em;
+}
 
 @import "bulma/sass/layout/section.sass";
 

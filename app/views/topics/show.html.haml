@@ -20,7 +20,7 @@
                 Source
       - unless @topic.image.file.nil?
         %img.cover(src="#{@topic.image.url}" alt="#{@topic.title}")
-      = simple_format @topic.body
+      = sanitize @topic.body, tags: %w(h2 h3 b i u blockquote), attributes: []
 
       %section.comments
         .media

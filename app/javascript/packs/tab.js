@@ -20,6 +20,5 @@ function cleanActive($ele) {
 }
 
 function setActive($ele) {
-  console.log($ele)
   $ele.classList.add('is-active')
 }

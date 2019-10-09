@@ -1,3 +1,4 @@
+//= require medium-editor
 if (typeof(MediumEditor) !== "undefined") {
   var editor = new MediumEditor('.editable', {
     autoLink: true,
