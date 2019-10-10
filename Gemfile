@@ -19,13 +19,14 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'skylight'
 gem 'sentry-raven'
 
-
 gem 'carrierwave', '~> 2.0'
 
 gem 'activeadmin'
 gem 'devise'
 gem 'cancancan'
 
+# memcached cli
+gem 'dalli'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

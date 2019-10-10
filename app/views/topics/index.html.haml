@@ -10,7 +10,7 @@
     .column.is-10
       .columns
         .masonry
-          = render 'list', topics: @topics
+          = render partial: 'list', collection: @topics, as: :topic, cached: true
       .columns.is-centered
         .is-12
           = paginate @topics

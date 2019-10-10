@@ -4,6 +4,7 @@ class Api::CommentsController < Api::BaseController
     @comment = Comment.new(comments_params)
     @comment.user_id = current_user.id
     if @comment.save
+      Actions::Topic.invalidate_cache(@comment.topic.id)
       render :show
     else
       return :unprocessed_entity
