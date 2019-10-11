@@ -14,7 +14,7 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = stylesheet_link_tag 'application', media: 'all'
   %body
-    %navbar.navbar.has-background-dark{role: "navigation", "aria-label" => "main navigation"}
+    %navbar.navbar.is-black{role: "navigation", "aria-label" => "main navigation"}
       .container
         .navbar-brand
           %a.navbar-item(href=root_path)
@@ -35,6 +35,17 @@
             .buttons
               %a.button.is-primary.is-wider.is-family-secondary(href="#{new_topic_path}")
                 New post
+          - if user_signed_in?
+            .navbar-item.has-dropdown.dropdown
+              .navbar-link
+                %a.has-text-white{"aria-controls" => "dropdown-menu", "aria-haspopup" => "true"}
+                  %i.icon-cog.icon-2x{"aria-hidden" => "true"}
+              .navbar-dropdown.is-black
+                %a.navbar-item(href="#{edit_user_registration_path}")
+                  Edit Profile
+                %a.navbar-item(href= "#{destroy_user_session_path}")
+                  Logout
+
     - unless notice.nil?
       .notification.is-primary= notice
     - unless alert.nil?

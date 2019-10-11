@@ -7,6 +7,11 @@
       = form_for @topic, as: :topic, url: topic_path(@topic.id), method: :patch do |f|
         = render 'tags_form', tags: @tags
 
-        = f.submit 'Skip step', class: "button is-light is-family-secondary#{extra_class}", "aria-haspopup" => "true", "data-target" => "signin-modal"
-        = f.submit 'Submit', class: "button is-family-secondary is-dark#{extra_class}", disabled: true, "aria-haspopup" => "true", "data-target" => "signin-modal", "data-enabler" => 'true'
+        .buttons.is-pulled-right
+          - if !user_signed_in?
+            - extra_class = ' modal-button'
+          - else
+            - extra_class = ''
+          = f.submit 'Skip step', class: "button is-light is-family-secondary#{extra_class}", "aria-haspopup" => "true", "data-target" => "signin-modal"
+          = f.submit 'Submit', class: "button is-family-secondary is-dark#{extra_class}", disabled: true, "aria-haspopup" => "true", "data-target" => "signin-modal", "data-enabler" => 'true'
 

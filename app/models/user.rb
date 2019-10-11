@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   before_create :set_name
+  has_many :topics
 
   def set_name
     self.name = self.email.split('@').first if self.name.nil?

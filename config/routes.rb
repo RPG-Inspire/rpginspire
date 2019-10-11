@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   }
 
   devise_for :admin_users, ActiveAdmin::Devise.config
-  root to: "home#index"
+  root to: 'home#index'
 
+  resource :users, only: [:update] do
+  end
   resources :topics do
     post :validate_step, on: :collection
     get :edit_tag, on: :member

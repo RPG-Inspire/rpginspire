@@ -8,6 +8,8 @@ $radius: 0;
 // cards variables
 $card-shadow: none;
 @import "bulma/sass/components/card.sass";
+$navbar-dropdown-arrow: $white;
+$navbar-dropdown-border-top: 0;
 @import "bulma/sass/components/media.sass";
 @import "bulma/sass/components/modal.sass";
 @import "bulma/sass/components/navbar.sass";
@@ -50,6 +52,15 @@ a.tag {
 navbar.navbar {
   a {
     text-transform: uppercase;
+  }
+  .navbar-dropdown.is-black {
+    background-color: $black;
+    .navbar-item {
+      &:hover {
+        color: $black;
+      }
+      color: $white;
+    }
   }
 }
 

@@ -8,8 +8,3 @@
           %label.checkbox
             %input.checkbox.is-borderless(type="checkbox" name="topic[tag_ids][]" value="#{tag.id}")
             = tag.title
-.buttons.is-pulled-right
-  - if !user_signed_in?
-    - extra_class = ' modal-button'
-  - else
-    - extra_class = ''
