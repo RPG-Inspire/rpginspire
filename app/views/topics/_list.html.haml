@@ -21,8 +21,20 @@
         %p.content.is-6.subtitle
           by
           %a(href="#") #{topic.user.name},
-          12:36,
-          %a.modal-button(href="#{topic_path(topic.slug)}" data-lazy-loaded="true" data-target="lazy-loaded-modal") preview []
+          = l topic.created_at.to_date, format: :short
+          ,
+          %a.modal-button(href="#{topic_path(topic.slug)}" data-lazy-loaded="true" data-target="lazy-loaded-modal") 
+            preview
+            %i.icon-window-maximize.icon>
+          - if can?(:edit, topic)
+            %a(href="#{edit_topic_path(topic.id)}")
+              Edit
+              %i.icon-edit.icon>
+          /- if can?(:delete, topic)
+          /  %a(href="#" class="has-text-danger")
+          /    Delete
+          /    %i.icon-trash.icon>
+
         %p.tags
           - topic.tags.each do |tag|
             %span.tag.is-primary.is-rounded= tag

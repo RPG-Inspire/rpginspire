@@ -1,0 +1,22 @@
+.field
+  .label=f.label :title
+  = f.text_field :title, class: 'input is-borderless', required: true
+.field
+  .label=f.label :image, "Cover Image"
+  .file.is-primary.has-name.is-fullwidth
+    %label.file-label
+      = f.file_field :image, class: "file-input", required: !f.object.persisted?, data: {target: "cover-image-filename"}
+      %span.file-cta
+        %span.file-label.is-family-secondary
+          Upload
+      %span#cover-image-filename.file-name
+        = f.object.image.file.filename unless f.object.image.file.nil?
+  - unless f.object.image.file.nil?
+    %img(src="#{f.object.image.url}")
+.field
+  .label=f.label :body, 'Content'
+  = f.text_area :body, class: 'textarea editable is-borderless', required: true
+
+= content_for :extra_js do
+  %script{:src => "//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js", async: true}
+

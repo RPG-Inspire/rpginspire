@@ -12,6 +12,11 @@ class TopicsController < ApplicationController
     end
   end
 
+  def edit
+    @tags = Contexts::Tag.get_all_grouped
+    @topic = Topic.find(params[:id])
+  end
+
   def show
     @topic = Topic.eager_load(:user).find_by_slug!(params[:id])
   end
@@ -21,7 +26,7 @@ class TopicsController < ApplicationController
   end
 
   def edit_tag
-    @tags = Tag.all.group_by { |i| i.print_type }
+    @tags = Contexts::Tag.get_all_grouped
     @topic = Topic.find(params[:id])
   end
 

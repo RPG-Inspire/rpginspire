@@ -13,41 +13,10 @@
       #new-topic-tab
         #submit-link-tab.tab-display.is-active
           = form_for @topic, as: :topic, url: topics_path do |f|
-            .field
-              .label=f.label :link, "Link URL"
-              = f.url_field :link, class: 'input is-borderless', required: true
-            .field
-              .label=f.label :title
-              = f.text_field :title, class: 'input is-borderless', required: true
-            .field
-              .label Do you own the creative rights to this piece?
-              %label.label
-                = f.radio_button :own_creative_rights, true, checked: false, value: true
-                Yes
-              %label.label
-                = f.radio_button :own_creative_rights, false, value: false, checked: true
-                No
-
+            = render 'link_topic_form', f: f
             = f.submit :submit, class: 'button is-primary is-family-secondary is-pulled-right'
         #create-post-tab.tab-display
           = form_for @topic, as: :topic, url: topics_path do |f|
-            .field
-              .label=f.label :title
-              = f.text_field :title, class: 'input is-borderless', required: true
-            .field
-              .label=f.label :image, "Cover Image"
-              .file.is-primary.has-name.is-fullwidth
-                %label.file-label
-                  = f.file_field :image, class: "file-input", required: true, data: {target: "cover-image-filename"}
-                  %span.file-cta
-                    %span.file-label.is-family-secondary
-                      Upload
-                  %span#cover-image-filename.file-name
-            .field
-              .label=f.label :body, 'Content'
-              = f.text_area :body, class: 'textarea editable is-borderless', required: true
-
+            = render 'normal_topic_form', f: f
             = f.submit :submit, class: 'button is-primary is-family-secondary is-pulled-right'
 
-= content_for :extra_js do
-  %script{:src => "//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js", async: true}

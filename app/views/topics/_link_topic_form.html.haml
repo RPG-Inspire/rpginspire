@@ -1,0 +1,15 @@
+.field
+  .label=f.label :link, "Link URL"
+  = f.url_field :link, class: 'input is-borderless', required: true
+.field
+  .label=f.label :title
+  = f.text_field :title, class: 'input is-borderless', required: true
+.field
+  .label Do you own the creative rights to this piece?
+  %label.label
+    = f.radio_button :own_creative_rights, true, checked: false, value: true
+    Yes
+  %label.label
+    = f.radio_button :own_creative_rights, false, value: false, checked: true
+    No
+

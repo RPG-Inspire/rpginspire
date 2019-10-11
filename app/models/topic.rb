@@ -23,5 +23,9 @@ class Topic < ApplicationRecord
   def set_slug
     self.slug = self.title.parameterize if self.slug.nil?
   end
+
+  def is_link?
+    self.link.present? && self.body.nil?
+  end
 end
 
