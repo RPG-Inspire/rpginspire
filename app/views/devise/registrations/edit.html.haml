@@ -15,6 +15,16 @@
           = f.label :email, class: "label"
           = f.email_field :email, autocomplete: "email", class: "input"
 
+        .field
+          = f.label :should_send_digest, class: "checkbox" do
+            = f.check_box :should_send_digest, class: "checkbox"
+            Send me a weekly digest
+
+        .field
+          = f.label :should_notify_activity, class: "checkbox" do
+            = f.check_box :should_notify_activity, class: "checkbox"
+            Notify me about activities on my posts
+
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %p.help.is-warning
             Currently waiting confirmation for: #{resource.unconfirmed_email}

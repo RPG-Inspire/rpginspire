@@ -24,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super do |resource|
-      Actions::Topic.invalidate_cache(resource.topics.pluck(:id))
+      Actions::Registration.invalidate_resources_cache_of(resource)
     end
   end
 
@@ -59,7 +59,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [
+      :name, :should_notify_activity, :should_send_digest
+    ])
   end
 
   # The path used after sign up.
