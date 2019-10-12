@@ -23,6 +23,7 @@ gem 'carrierwave', '~> 2.0'
 
 gem 'activeadmin'
 gem 'devise'
+gem 'omniauth-twitter'
 gem 'cancancan'
 
 # memcached cli

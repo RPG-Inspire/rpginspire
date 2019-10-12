@@ -4,8 +4,10 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  get 'auth/:twitter/callback', to: 'oauth_sessions#twitter'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+
   root to: 'home#index'
 
   resource :users, only: [:update] do
