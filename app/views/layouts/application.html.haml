@@ -4,7 +4,7 @@
     - if Rails.env.production?
       %script
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-        ga('create', '#{Rails.application.secrets.ga}', 'auto');
+        ga('create', '#{ga_code}', 'auto');
         ga('send', 'pageview');
       %script(async=true src='https://www.google-analytics.com/analytics.js')
 
