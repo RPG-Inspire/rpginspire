@@ -7,5 +7,6 @@ class Ability
     return if user.nil?
 
     can :manage, Topic, user_id: user.id
+    can :edit_tag, Topic, user_id: nil
   end
 end

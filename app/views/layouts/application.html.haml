@@ -7,9 +7,9 @@
       ga('send', 'pageview');
     %script(async=true src='https://www.google-analytics.com/analytics.js')
 
-    %title Rpginspire
     = csrf_meta_tags
     = csp_meta_tag
+    = display_meta_tags site: 'RPG Inspire'
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = stylesheet_link_tag 'application', media: 'all'
   %body

@@ -1,8 +1,14 @@
+- set_meta_tags og: {title: @topic.title, description: @topic.description, image: @topic.image.url, url: topic_url(@topic.slug)}
+- set_meta_tags twitter: {title: @topic.title, description: @topic.description, image: {src: @topic.image.url}}
+- set_meta_tags canonical: topic_url(@topic.slug)
+- set_meta_tags description: @topic.description
+- keywords @topic.keywords
+
 %article.article.container(data-topic-id="#{@topic.id}")
   .columns
     .column.is-6.is-offset-3
 
-      %h1= @topic.title
+      %h1= title @topic.title
       %section.meta
         .media
           .media-left
@@ -36,3 +42,4 @@
 
         - @topic.comments.each do |comment|
           = render 'comments/show', comment: comment
+

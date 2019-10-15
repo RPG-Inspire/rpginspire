@@ -27,5 +27,13 @@ class Topic < ApplicationRecord
   def is_link?
     self.link.present? && self.body.nil?
   end
+
+  def description
+    ActionView::Base.full_sanitizer.sanitize(self.body)[0..140]
+  end
+
+  def keywords
+    self.tags.map {|t| t.title }.join(', ')
+  end
 end
 

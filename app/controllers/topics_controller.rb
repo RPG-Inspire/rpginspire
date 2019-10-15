@@ -13,8 +13,9 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    @tags = Contexts::Tag.get_all_grouped
     @topic = Topic.find(params[:id])
+    authorize! :update, @topic
+    @tags = Contexts::Tag.get_all_grouped
   end
 
   def show
@@ -22,16 +23,19 @@ class TopicsController < ApplicationController
   end
 
   def new
+    @page_title = 'New topic'
     @topic = TopicForm.new({}, current_user)
   end
 
   def edit_tag
-    @tags = Contexts::Tag.get_all_grouped
     @topic = Topic.find(params[:id])
+    authorize! :edit_tag, @topic
+    @tags = Contexts::Tag.get_all_grouped
   end
 
   def update
     @topic = TopicForm.new(topic_params, current_user, Topic.find(params[:id]))
+    authorize! :update, @topic
 
     if @topic.valid? && @topic.topic.save
       redirect_to :root, notice: 'Your topic has been published successfully!'

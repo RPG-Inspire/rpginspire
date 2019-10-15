@@ -25,6 +25,7 @@ gem 'activeadmin'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'cancancan'
+gem 'meta-tags'
 
 # memcached cli
 gem 'dalli'
