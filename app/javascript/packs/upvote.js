@@ -3,6 +3,7 @@ const axios = require('axios')
 var $upvote = getAll('.upvote')
 var upvoteClick = function(e) {
   if (this.ref.dataset.active === "true") { return }
+  submitUpvote()
 
   axios.patch('/api/topics/' + this.id + '/upvote', csrfObj())
    .then((function (response) {

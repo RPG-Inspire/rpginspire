@@ -12,6 +12,7 @@ require("./dropdown.js")
 require("./modal.js")
 require("./upload.js")
 require("./tab.js")
+require("./tr.js")
 require("./infinite_scroll.js")
 
 

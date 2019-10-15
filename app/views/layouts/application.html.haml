@@ -1,12 +1,11 @@
 !!!
 %html
   %head
-    - if Rails.env.production?
-      %script
-        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-        ga('create', '#{ga_code}', 'auto');
-        ga('send', 'pageview');
-      %script(async=true src='https://www.google-analytics.com/analytics.js')
+    %script
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', '#{ga_code}', 'auto');
+      ga('send', 'pageview');
+    %script(async=true src='https://www.google-analytics.com/analytics.js')
 
     %title Rpginspire
     = csrf_meta_tags
@@ -33,7 +32,7 @@
             %a.has-text-white.is-size-7.has-text-weight-bold(href="https://www.instagram.com/rpginspire/" target="_blank") Instagram
           .navbar-item
             .buttons
-              %a.button.is-primary.is-wider.is-family-secondary(href="#{new_topic_path}")
+              %a.button.is-primary.is-wider.is-family-secondary(href="#{new_topic_path}" onclick="return clickNewPost();")
                 New post
           - if user_signed_in?
             .navbar-item.has-dropdown.dropdown

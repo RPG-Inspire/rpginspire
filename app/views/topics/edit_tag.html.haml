@@ -4,7 +4,7 @@
 .container
   .columns.is-centered
     .column.is-6.tags-selector
-      = form_for @topic, as: :topic, url: topic_path(@topic.id), method: :patch do |f|
+      = form_for @topic, as: :topic, url: topic_path(@topic.id), method: :patch, html: {onsubmit: 'return submitTags();'} do |f|
         = render 'tags_form', tags: @tags
 
         .buttons.is-pulled-right

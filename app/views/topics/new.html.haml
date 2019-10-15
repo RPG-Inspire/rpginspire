@@ -12,11 +12,11 @@
             %a Create post
       #new-topic-tab
         #submit-link-tab.tab-display.is-active
-          = form_for @topic, as: :topic, url: topics_path do |f|
+          = form_for @topic, as: :topic, url: topics_path, html: {onsubmit: 'return submitNewPost(\'link\');'} do |f|
             = render 'link_topic_form', f: f
             = f.submit :submit, class: 'button is-primary is-family-secondary is-pulled-right'
         #create-post-tab.tab-display
-          = form_for @topic, as: :topic, url: topics_path do |f|
+          = form_for @topic, as: :topic, url: topics_path, html: {onsubmit: 'return submitNewPost(\'post\');'} do |f|
             = render 'normal_topic_form', f: f
             = f.submit :submit, class: 'button is-primary is-family-secondary is-pulled-right'
 
