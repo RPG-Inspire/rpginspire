@@ -13,7 +13,7 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = stylesheet_link_tag 'application', media: 'all'
   %body
-    %navbar.navbar.is-black{role: "navigation", "aria-label" => "main navigation"}
+    %nav.navbar.is-black{role: "navigation", "aria-label" => "main navigation"}
       .container
         .navbar-brand
           %a.navbar-item(href=root_path)
@@ -23,7 +23,7 @@
               Curated RPG resources
               %br
               that "WOW" your players
-        .navbar-end
+        .navbar-end.navbar-menu
           .navbar-item
             %a.has-text-white.is-size-7.has-text-weight-bold(href="https://discordapp.com/invite/quv9gsM" target="_blank") Discord
           .navbar-item
