@@ -7,11 +7,12 @@
   .columns
     .column.is-2.is-clipped
       - @tags.each do |group, tags|
-        = group
+        = group.pluralize.titleize
         %br
         - tags.each do |tag|
           %a.is-rounded.tag.is-primary.is-outlined(href="#")= tag.title
           %br
+        %br
     .column.is-10
       #infinite-content.masonry(data-next-page="#{@topics.next_page}" data-url="#{topics_path}")
         = render partial: 'topics/list', collection: @topics, as: :topic, cached: !user_signed_in?
