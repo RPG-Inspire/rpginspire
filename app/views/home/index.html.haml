@@ -5,7 +5,7 @@
 
 .container
   .columns
-    .column.is-2.is-clipped
+    .column.is-2.is-clipped.is-hidden-touch
       - @tags.each do |group, tags|
         = group.pluralize.titleize
         %br
