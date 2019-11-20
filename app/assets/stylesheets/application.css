@@ -15,6 +15,7 @@
  *= require components/_article.scss
  *= require components/_masonry.scss
  *= require components/_tab.scss
+ *= require components/_navbar.scss
  *= require_self
  */
 

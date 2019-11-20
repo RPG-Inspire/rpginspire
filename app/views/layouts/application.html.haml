@@ -15,6 +15,10 @@
   %body
     %nav.navbar.is-black{role: "navigation", "aria-label" => "main navigation"}
       .container
+        %a.navbar-burger.burger.is-pulled-left{"aria-expanded" => "false", "aria-label" => "menu", "data-target" => "navMenu", :role => "button"}
+          %span{"aria-hidden" => "true"}
+          %span{"aria-hidden" => "true"}
+          %span{"aria-hidden" => "true"}
         .navbar-brand
           %a.navbar-item(href=root_path)
             = image_tag 'logo.svg'
@@ -23,14 +27,17 @@
               Curated RPG resources
               %br
               that "WOW" your players
-        .navbar-end.navbar-menu
+        #navMenu.navbar.navbar-end.navbar-menu.is-black
+          .navbar-item.is-hidden-desktop
+            %a.button.is-primary.is-family-secondary.is-fullwidth(href="#{new_topic_path}" onclick="return clickNewPost();")
+              New post
           .navbar-item
             %a.has-text-white.is-size-7.has-text-weight-bold(href="https://discordapp.com/invite/quv9gsM" target="_blank") Discord
           .navbar-item
             %a.has-text-white.is-size-7.has-text-weight-bold(href="https://twitter.com/rpg_inspire" target="_blank") Twitter
           .navbar-item
             %a.has-text-white.is-size-7.has-text-weight-bold(href="https://www.instagram.com/rpginspire/" target="_blank") Instagram
-          .navbar-item
+          .navbar-item.is-hidden-touch
             .buttons
               %a.button.is-primary.is-wider.is-family-secondary(href="#{new_topic_path}" onclick="return clickNewPost();")
                 New post

@@ -14,6 +14,7 @@ require("./upload.js")
 require("./tab.js")
 require("./tr.js")
 require("./infinite_scroll.js")
+require("./navbar_burger.js")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

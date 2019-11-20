@@ -1,0 +1,8 @@
+@import "bulma/sass/utilities/mixins.sass";
+
+@include touch {
+  #navMenu {
+    position: absolute;
+    width: 100%;
+  }
+}
