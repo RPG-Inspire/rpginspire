@@ -4,10 +4,10 @@
       %figure.image
         - if topic.link.blank?
           %a.modal-button(href="#{topic_path(topic.slug)}" onclick="return clickPreview()" data-lazy-loaded="true" data-target="lazy-loaded-modal")
-            %img(src="#{topic.image.card_preview.url}" alt="#{topic.title}")
+            = webp_tag topic.image.card_preview, topic.title
         - else
           %a(href="#{topic.link}" target="_blank" onclick="return clickLink()")
-            %img(src="#{topic.image.card_preview.url}" alt="#{topic.title}")
+            = webp_tag topic.image.card_preview, topic.title
   .card-content
     .media
       .media-left

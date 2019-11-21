@@ -25,7 +25,7 @@
               %a.button.is-primary.is-family-secondary.is-wider(href="#{@topic.link}" target="_blank")
                 Source
       - unless @topic.image.file.nil?
-        %img.cover(src="#{@topic.image.url}" alt="#{@topic.title}")
+        = webp_tag @topic.image.cover, @topic.title
       = sanitize @topic.body, tags: %w(h2 h3 b i u blockquote), attributes: []
 
       %section.comments
