@@ -1,0 +1,41 @@
+.card.topic-card.masonry-item
+  .card-image
+    - unless topic.image.file.nil?
+      %figure.image
+        - if topic.link.blank?
+          %a.modal-button(href="#{topic_path(topic.slug)}" onclick="return clickPreview()" data-lazy-loaded="true" data-target="lazy-loaded-modal")
+            = webp_tag topic.image.card_preview, topic.title
+        - else
+          %a(href="#{topic.link}" target="_blank" onclick="return clickLink()")
+            = webp_tag topic.image.card_preview, topic.title
+  .card-content
+    .media
+      .media-left
+        = render partial: 'topics/upvote_button', locals: {topic: topic}, formats: [:html]
+      .media-content
+        %p.title.is-5
+          - if topic.link.blank?
+            %a.modal-button(href="#{topic_path(topic.slug)}" onclick="return clickPreview()" data-lazy-loaded="true" data-target="lazy-loaded-modal")=topic.title
+          - else
+            %a(href="#{topic.link}" target="_blank" onclick="return clickLink()")=topic.title
+        %p.content.is-6.subtitle
+          by
+          %a(href="#") #{topic.user.name},
+          = l topic.created_at.to_date, format: :short
+          ,
+          %a.modal-button(href="#{topic_path(topic.slug)}" onclick="return clickPreview()" data-lazy-loaded="true" data-target="lazy-loaded-modal")
+            preview
+            %i.icon-window-maximize.icon>
+          - if can?(:edit, topic)
+            %a(href="#{edit_topic_path(topic.id)}")
+              Edit
+              %i.icon-edit.icon>
+          /- if can?(:delete, topic)
+          /  %a(href="#" class="has-text-danger")
+          /    Delete
+          /    %i.icon-trash.icon>
+
+        %p.tags
+          - topic.tags.each do |tag|
+            %span.tag.is-primary.is-rounded= tag
+

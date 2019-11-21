@@ -19,10 +19,12 @@
 
 # Ignore uploaded files in development.
 /storage/*
-!/storage/.keep
+!/storage/.kceep
 
 *.swp
 /public/assets
+/public/uploads
+/public/development
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.

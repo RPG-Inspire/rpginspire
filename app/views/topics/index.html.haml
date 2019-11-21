@@ -1,0 +1,17 @@
+.container
+  .columns
+    .column.is-2
+      - @tags.each do |group, tags|
+        = group
+        %br
+        - tags.each do |tag|
+          %a.is-rounded.tag.is-primary.is-outlined(href="#")= tag.title
+          %br
+    .column.is-10
+      .columns
+        .masonry
+          = render partial: 'list', collection: @topics, as: :topic, cached: true
+      .columns.is-centered
+        .is-12
+          = paginate @topics
+

@@ -1,0 +1,19 @@
+- content_for :extra_js do
+  = javascript_include_tag params[:controller]
+
+.container
+  .columns.is-centered
+    .column.is-6.tags-selector
+      %h2.is-size-2.has-text-weight-bold
+        Edit post
+      %br
+      = form_for @topic, as: :topic, url: topic_path(@topic.id), method: :put do |f|
+        - if @topic.is_link?
+          = render 'link_topic_form', f: f
+        - else
+          = render 'normal_topic_form', f: f
+        = render 'tags_form', tags: @tags
+
+        .buttons.is-pulled-right
+          = f.submit 'Save changes', class: "button is-family-secondary is-primary", "aria-haspopup" => "true", "data-target" => "signin-modal", "data-enabler" => 'true'
+

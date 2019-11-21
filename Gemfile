@@ -16,12 +16,19 @@ gem "haml-rails", "~> 2.0"
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'skylight'
+gem 'sentry-raven'
+
 gem 'carrierwave', '~> 2.0'
 
 gem 'activeadmin'
 gem 'devise'
+gem 'omniauth-twitter'
 gem 'cancancan'
+gem 'meta-tags'
 
+# memcached cli
+gem 'dalli'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

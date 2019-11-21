@@ -3,10 +3,18 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("./helpers.js")
+require("./upvote.js")
+require("./comment.js")
+require("./dropdown.js")
+require("./modal.js")
+require("./upload.js")
+require("./tab.js")
+require("./tr.js")
+require("./infinite_scroll.js")
+require("./navbar_burger.js")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -15,3 +23,10 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+//var signin_btn = document.getElementById('signin-btn')
+//signin_btn.addEventListener("click", function(e) {
+//  e.preventDefault()
+//  var signin_modal = document.getElementById('signin-modal')
+//  signin_modal.className += " is-active"
+//});

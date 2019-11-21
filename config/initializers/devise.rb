@@ -114,7 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '5909cca1122eda97b220bf67954d03ad07cc40a2480432acd5f2bf141130c170ea32fa801e07bfdcf7211351eca9f2df6c886c9ae14c3ca7e826fe51fb8fc21e'
+  config.pepper = Rails.application.credentials.devise_pepper
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -254,7 +254,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  config.sign_out_via = :get
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

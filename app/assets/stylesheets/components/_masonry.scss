@@ -1,0 +1,15 @@
+@import "bulma/sass/utilities/mixins.sass";
+
+@include desktop {
+  .masonry { /* Masonry container */
+    column-count: 2;
+    column-gap: 1em;
+    margin-bottom: 25px;
+
+    .item { /* Masonry bricks or child elements */
+      display: inline-block;
+      margin: 0 0 1em 0;
+      width: 100%;
+    }
+  }
+}

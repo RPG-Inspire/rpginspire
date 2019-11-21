@@ -1,0 +1,29 @@
+.tabs.is-fullwidth(data-target="session-tab")
+  %ul
+    %li.is-active(data-target="signin-tab")
+      %a Sign in
+    %li(data-target="signup-tab")
+      %a Create Account
+#session-tab
+  #signin-tab.tab-display.is-active
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field
+        = f.label :email, class: 'label'
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
+      .field
+        = f.label :password, class: 'label'
+        = f.password_field :password, autocomplete: "current-password", class: "input"
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .actions
+        = f.submit "Sign in", class: "button is-primary is-fullwidth is-family-secondary"
+        .has-text-centered.is-size-7
+          /%a(href="#") Can't login?
+        %br
+        %a.button.is-twitter.is-fullwidth.is-family-secondary(href="/auth/twitter")
+          Sign in with Twitter
+  #signup-tab.tab-display
+    = render 'devise/registrations/form'
+  

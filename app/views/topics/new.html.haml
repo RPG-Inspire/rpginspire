@@ -1,0 +1,22 @@
+- content_for :extra_js do
+  = javascript_include_tag params[:controller]
+
+.container
+  .columns.is-centered
+    .column.is-6
+      .topic-tab.tabs.is-fullwidth(data-target="new-topic-tab")
+        %ul
+          %li.is-active(data-target="submit-link-tab")
+            %a Submit a link
+          %li(data-target="create-post-tab")
+            %a Create post
+      #new-topic-tab
+        #submit-link-tab.tab-display.is-active
+          = form_for @topic, as: :topic, url: topics_path, html: {onsubmit: 'return submitNewPost(\'link\');'} do |f|
+            = render 'link_topic_form', f: f
+            = f.submit :submit, class: 'button is-primary is-family-secondary is-pulled-right'
+        #create-post-tab.tab-display
+          = form_for @topic, as: :topic, url: topics_path, html: {onsubmit: 'return submitNewPost(\'post\');'} do |f|
+            = render 'normal_topic_form', f: f
+            = f.submit :submit, class: 'button is-primary is-family-secondary is-pulled-right'
+

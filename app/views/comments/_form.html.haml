@@ -1,0 +1,6 @@
+= form_for comment, url: api_comments_path, html: { class: 'new_comment', onsubmit: "return submitComment(#{comment.topic.id})", data: {id: comment.topic.id} } do |f|
+  .field
+    .control
+      = f.text_area :body, class: "textarea has-fixed-size", maxlength: "500", rows: 8
+  .actions
+    = f.submit "Comment", class: "is-pulled-right button is-primary is-family-secondary"

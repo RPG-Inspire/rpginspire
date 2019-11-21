@@ -10,6 +10,9 @@ services:
       - db
     volumes:
       - .:/app
+    environment:
+      TWITTER_API_KEY: GYrwCH9CjcduIEAxDYHgwttZf
+      TWITTER_API_SECRET: QPwn2KCED2GOSg31YRNymp1Qhu9abRWwHqS13HI6Xr3JzkBqxU
 
   db:
     image: "postgres:11.5-alpine"

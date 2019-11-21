@@ -1,0 +1,117 @@
+$radius: 0;
+@import "_fonts.scss";
+@import "_icons.scss";
+@import "_colors.scss";
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/base/_all.sass";
+
+// cards variables
+$card-shadow: none;
+@import "bulma/sass/components/card.sass";
+$navbar-dropdown-arrow: $white;
+$navbar-dropdown-border-top: 0;
+@import "bulma/sass/components/media.sass";
+.media-content {
+  overflow-x: visible;
+}
+@import "bulma/sass/components/modal.sass";
+@import "bulma/sass/components/navbar.sass";
+@import "bulma/sass/components/tabs.sass";
+
+@import "bulma/sass/grid/columns.sass";
+
+// buttons variables
+@import "bulma/sass/elements/button.sass";
+@import "bulma/sass/elements/container.sass";
+@import "bulma/sass/elements/content.sass";
+@import "bulma/sass/elements/notification.sass";
+@import "bulma/sass/elements/image.sass";
+
+// form variables
+@import "bulma/sass/elements/tag.sass";
+
+$file-name-border-color: $white;
+@import "bulma/sass/form/_all.sass";
+.file-name {
+  background-color: $white;
+}
+.file-cta {
+  padding-right: 3.5em;
+  padding-left: 3.5em;
+}
+
+@import "bulma/sass/layout/section.sass";
+
+.tag.is-primary.is-outlined {
+  @extend .button.is-primary.is-outlined;
+  border: solid 1px;
+}
+a.tag {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+navbar.navbar {
+  a {
+    text-transform: uppercase;
+  }
+  .navbar-dropdown.is-black {
+    background-color: $black;
+    .navbar-item {
+      &:hover {
+        color: $black;
+      }
+      color: $white;
+    }
+  }
+}
+
+.button {
+  text-transform: uppercase;
+  &.is-wider {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  $twitter-color: #009cde;
+  $twitter-color-invert: #ffffff;
+  &.is-twitter {
+    background-color: $twitter-color;
+    border-color: transparent;
+    color: #fff;
+    &:hover,
+    &.is-hovered {
+      background-color: darken($twitter-color, 2.5%);
+      border-color: transparent;
+      color: $twitter-color-invert;
+    }
+    &:focus,
+    &.is-focused {
+      border-color: transparent;
+      color: $twitter-color-invert;
+      &:not(:active) {
+        box-shadow: $button-focus-box-shadow-size rgba($twitter-color, 0.25);
+      }
+    }
+    &:active,
+    &.is-active {
+      background-color: darken($twitter-color, 5%);
+      border-color: transparent;
+      color: $twitter-color-invert;
+    }
+  }
+}
+
+.label {
+  text-transform: uppercase;
+}
+
+.has-initial-transformation {
+  text-transform: initial;
+}
+
+.modal-content.is-fullwidth {
+  width: 100%;
+  max-width: 100%;
+  margin: 100px auto 0 auto;
+}

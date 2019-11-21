@@ -1,0 +1,16 @@
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {onsubmit: 'return submitSignup(\'email\');'}) do |f|
+  = render 'devise/shared/error_messages', resource: resource
+  .field
+    = f.label :email, class: 'label'
+    = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
+  .field
+    = f.label :password, class: 'label'
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    = f.password_field :password, autocomplete: 'new-password', class: 'input'
+  .actions
+    = f.submit 'Sign up', class: 'button is-primary is-fullwidth is-family-secondary'
+    %br
+    %a.button.is-twitter.is-fullwidth.is-family-secondary(href='#' onclick="submitSignup('twitter')")
+      Sign up with Twitter

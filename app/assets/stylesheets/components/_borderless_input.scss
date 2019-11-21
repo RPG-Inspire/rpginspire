@@ -1,0 +1,11 @@
+.input, .textarea {
+  &.is-borderless {
+    border: 0;
+    box-shadow: none;
+
+    &:focus {
+      border: 0;
+      box-shadow: none;
+    }
+  }
+}

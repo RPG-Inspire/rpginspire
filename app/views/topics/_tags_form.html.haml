@@ -1,0 +1,10 @@
+- tags.each do |tag_type,tags|
+
+  %label.is-uppercase.has-text-weight-bold=tag_type
+  - tags.each_slice(3) do |group|
+    .columns
+      - group.each do |tag|
+        .column.is-one-third
+          %label.checkbox
+            %input.checkbox.is-borderless(type="checkbox" name="topic[tag_ids][]" value="#{tag.id}")
+            = tag.title
