@@ -1,8 +1,10 @@
-version: "3"
+version: "3.4"
 services:
   # the main image, this is the application
   app:
-    build: .
+    build:
+      context: .
+      target: rbbuilder
     command: bundle exec rails s -b 0.0.0.0
     ports:
       - 3000:3000

@@ -28,8 +28,12 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
+  config.assets.prefix = '/production/assets'
+  config.assets.digest = true
+  config.assets.enabled = true
+
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = 'http://assets.example.com'
+  config.action_controller.asset_host = ENV['ASSET_HOST']
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
@@ -110,3 +114,23 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 end
+
+AssetSync.configure do |config|
+  config.fog_provider = 'AWS'
+
+  config.aws_access_key_id = ENV.fetch('AWS_ACCESS_KEY_ID_IAM') { '' }
+  config.aws_secret_access_key = ENV.fetch('AWS_SECRET_ACCESS_KEY_IAM') { '' }
+  config.fog_directory = ENV.fetch('ASSET_S3_BUCKET') { '' }
+  config.fog_region = ENV.fetch('AWS_S3_REGION') { '' }
+
+  config.run_on_precompile = false
+
+  public_root = Rails.root.join("public")
+  config.add_local_file_paths do
+    Dir.chdir(public_root) do
+      packs_dir = Webpacker.config.public_output_path.relative_path_from(public_root)
+      Dir[File.join(packs_dir, '/**/**')]
+    end
+  end
+end
+

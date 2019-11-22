@@ -1,2 +1,7 @@
 vendor/bundle
+config/master.key
+Dockerfile
+docker-compose.yaml
+.git
+.gitignore
 
