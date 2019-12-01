@@ -35,7 +35,7 @@ class TopicsController < ApplicationController
 
   def update
     @topic = TopicForm.new(topic_params, current_user, Topic.find(params[:id]))
-    authorize! :update, @topic
+    authorize! :update, @topic.topic
 
     if @topic.valid? && @topic.topic.save
       redirect_to :root, notice: 'Your topic has been published successfully!'
