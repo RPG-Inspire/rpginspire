@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def set_name
     self.name = self.email.split('@').first if self.name.nil?
   end
+
+  def self.minimum_password_length
+    password_length.min || 6
+  end
 end

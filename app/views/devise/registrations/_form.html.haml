@@ -5,10 +5,9 @@
     = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
   .field
     = f.label :password, class: 'label'
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
     = f.password_field :password, autocomplete: 'new-password', class: 'input'
+    %p.help
+      #{User.minimum_password_length} characters minimum
   .actions
     = f.submit 'Sign up', class: 'button is-primary is-fullwidth is-family-secondary'
     %br
