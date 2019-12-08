@@ -29,7 +29,8 @@ class Topic < ApplicationRecord
   end
 
   def description
-    ActionView::Base.full_sanitizer.sanitize(self.body)[0..140]
+    sanitized_body = ActionView::Base.full_sanitizer.sanitize(self.body) || ''
+    sanitized_body[0..140]
   end
 
   def keywords
