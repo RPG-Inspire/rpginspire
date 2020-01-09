@@ -6,6 +6,7 @@ class Topic < ApplicationRecord
   has_many :comments
 
   scope :is_draft, -> { where(user_id: nil) }
+  scope :by_tag_titles, -> (tag_title_list) { joins(:tags).where(tags: {title: tag_title_list}) }
   scope :draft_by_id, -> (draft_id) { where(user_id: nil, id: draft_id) }
 
   mount_uploader :image, TopicImageUploader
