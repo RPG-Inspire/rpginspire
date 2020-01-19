@@ -58,7 +58,7 @@ class TopicsController < ApplicationController
   private
 
   def tag_title_list
-    params[:tags]&.split('--') || []
+    params[:tags] || []
   end
 
   def topic_params
