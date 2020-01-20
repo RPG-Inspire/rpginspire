@@ -3,8 +3,8 @@ const axios = require('axios')
 var $infiniteContent = document.getElementById('infinite-content')
 
 if ($infiniteContent) {
-  function activateScrollable(url, nextPage) {
-    window.addEvent(window, 'scroll', scrollEvent.bind({url: url, nextPage: nextPage}))
+  function activateScrollable(url) {
+    window.addEvent(window, 'scroll', scrollEvent.bind({url: url}))
   }
 
   function pageYOffset(doc) {
@@ -12,11 +12,11 @@ if ($infiniteContent) {
   }
 
   var scrollEvent = function() {
-    if (shouldFetch() && this.nextPage) {
+    if (shouldFetch() && nextPage() != "null") {
       if (this.fetching) { return }
       this.fetching = true
       window.removeEvent(window, 'scroll', function a() {})
-      axios.get(this.url, {params: {page: this.nextPage, format: 'json'}, })
+      axios.get(this.url, {params: {page: nextPage(), tags: filterList(), format: 'json'}, })
         .then((function (response) {
           var e = document.createElement('div')
           e.innerHTML = response.data.content
@@ -26,7 +26,7 @@ if ($infiniteContent) {
             infiniteContent.appendChild(node)
           })
 
-          this.that.nextPage = response.data.meta.next_page
+          setNextPage(response.data.meta.next_page)
           this.that.fetching = false
         }).bind({that: this}))
     }
@@ -56,5 +56,5 @@ if ($infiniteContent) {
     return amountScrolled() > threshold
   }
 
-  activateScrollable($infiniteContent.dataset.url, $infiniteContent.dataset.nextPage)
+  activateScrollable($infiniteContent.dataset.url)
 }

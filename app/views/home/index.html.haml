@@ -10,7 +10,7 @@
         = group.pluralize.titleize
         %br
         - tags.each do |tag|
-          %a.is-rounded.tag.is-primary.is-outlined(href="#")= tag.title
+          %a.is-rounded.tag.is-primary.is-outlined(href="#" data-filter data-title="#{tag.title}")= tag.title
           %br
         %br
     .column.is-10

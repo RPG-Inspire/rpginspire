@@ -10,6 +10,27 @@ window.loadXMLDoc = function(url, fn) {
   xmlhttp.send()
 }
 
+window.filterList = function() {
+  var activeFilters = getAll('[data-filter]:not(.is-outlined)')
+  var filters = []
+
+  activeFilters.forEach(function($el) {
+    filters.push($el.dataset['title'])
+  })
+
+  return filters
+}
+
+window.nextPage = function() {
+  var infiniteContent = document.querySelector('#infinite-content')
+  return infiniteContent.dataset['nextPage']
+}
+
+window.setNextPage = function(nextPage) {
+  var infiniteContent = document.querySelector('#infinite-content')
+  infiniteContent.dataset['nextPage'] = nextPage
+}
+
 window.getAll = function(selector) {
   return Array.prototype.slice.call(document.querySelectorAll(selector), 0)
 }

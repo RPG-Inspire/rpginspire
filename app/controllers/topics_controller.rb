@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   before_action :authenticate_user!, only: [:edit_tag]
 
   def index
-    @topics = Topic.includes(:tags, :votes, :user).order(id: :desc).page(params[:page]).per(20)
+    @topics = Actions::Topic.retrieve_topics(tag_title_list, params[:page])
     respond_to do |format|
       format.html do
         @tags = Tag.joins(:topics).order(title: :asc).uniq.group_by { |i| i.tag_type }
@@ -56,6 +56,10 @@ class TopicsController < ApplicationController
   end
 
   private
+
+  def tag_title_list
+    params[:tags] || []
+  end
 
   def topic_params
     return {} if params[:topic].nil?
