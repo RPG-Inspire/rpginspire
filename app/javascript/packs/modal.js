@@ -29,15 +29,21 @@ function prepareLazyLoad($el) {
   })
 }
 
+
+window.triggerModal = function(e, el) {
+  e.preventDefault()
+  var target = el.dataset.target
+  if (el.dataset.lazyLoaded) {
+    prepareLazyLoad(el)
+  }
+
+  openModal(target)
+}
+
 if ($modalButtons.length > 0) {
   $modalButtons.forEach(function ($el) {
     $el.addEventListener('click', function (e) {
-      e.preventDefault()
-      var target = $el.dataset.target
-      if ($el.dataset.lazyLoaded) {
-        prepareLazyLoad($el)
-      }
-      openModal(target)
+      window.triggerModal(e, $el)
     })
   })
 }
