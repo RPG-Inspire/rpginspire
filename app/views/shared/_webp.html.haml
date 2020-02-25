@@ -1,5 +1,5 @@
 %picture{:style => "max-width: #{uploader.original.width}px; max-height: #{uploader.original.height}px"}
   %source{:srcset => "#{uploader.original.url}", :type => "image/webp"}
   %source{:srcset => "#{uploader.fallback.url}", :type => "image/jpeg"}
-    %img(src="#{uploader.fallback.url}" alt="#{alt}" height="#{uploader.fallback.height}px" width="#{uploader.fallback.width}px")
+    %img(src="#{uploader.fallback.url}" alt="#{alt}")
 
