@@ -15,7 +15,7 @@
     %img(src="#{f.object.image.url}")
 .field
   .label=f.label :body, 'Content'
-  = f.text_area :body, class: 'textarea editable is-borderless', required: true
+  = f.text_area :body, class: 'medium-editor textarea editable is-borderless', required: true
 
 = content_for :extra_js do
   %script{:src => "//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js", async: true}
