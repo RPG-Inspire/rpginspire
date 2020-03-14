@@ -26,7 +26,7 @@
                 Source
       - unless @topic.image.file.nil?
         = webp_tag @topic.image.cover, @topic.title
-      = sanitize @topic.body, tags: %w(h2 h3 b i u blockquote), attributes: []
+      = sanitize @topic.body, tags: %w(h2 h3 b i u blockquote br p), attributes: []
 
       %section.comments
         .media
