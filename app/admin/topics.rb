@@ -1,18 +1,21 @@
 ActiveAdmin.register Topic do
+  permit_params :title, :slug, :link, :image, :body, :tag_ids, :user_id
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  permit_params :title, :slug, :link, :image, :body, :tag_id, :user_id
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:title, :slug, :link, :image, :body, :tag_id, :user_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+  form do |f|
+    f.inputs "Details" do
+      f.input :title
+      f.input :slug
+      f.input :image
+      f.input :user
+    end
+    f.inputs "Content" do
+      f.input :link
+      f.input :body
+    end
+    f.inputs "Tags" do
+      f.input :tags, :as => :check_boxes
+    end
+
+    f.submit
+  end
 end
