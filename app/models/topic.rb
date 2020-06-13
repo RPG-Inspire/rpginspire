@@ -13,8 +13,12 @@ class Topic < ApplicationRecord
 
   before_create :set_slug
 
-  def score
-    votes.inject(0) { |sum, vote| sum + vote.vote_weight }
+  def score #maintain compatibility with the previus method
+    score_sum_cache
+  end
+
+  def calc_score
+    self.score_sum_cache = votes.inject(0) { |sum, vote| sum + vote.vote_weight }
   end
 
   def has_upvote_from(user_id)

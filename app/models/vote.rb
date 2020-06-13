@@ -8,6 +8,8 @@ class Vote < ApplicationRecord
   scope :by_user, -> (user_id) { where(user_id: user_id) }
   scope :upvote_from_user, -> (user_id) { upvote.by_user(user_id) }
 
+  after_save :calculate_topic_score
+
   def self.find_vote!(topic_id, user_id)
     find_vote(topic_id, user_id).first
   end
@@ -23,5 +25,9 @@ class Vote < ApplicationRecord
   def vote_weight
     self.vote_type == "upvote" ? 1 : 0
   end
-end
 
+  def calculate_topic_score
+    topic.calc_score
+    topic.save
+  end
+end
