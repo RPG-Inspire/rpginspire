@@ -14,7 +14,7 @@ class Topic < ApplicationRecord
   before_create :set_slug
 
   def score #maintain compatibility with the previus method
-    score_sum_cache
+    self.score_sum_cache
   end
 
   def calc_score
