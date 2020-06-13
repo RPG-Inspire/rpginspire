@@ -8,5 +8,10 @@ class Actions::Topic
     topics = topics.by_tag_titles(tag_title_list) unless tag_title_list.empty?
     topics.order(id: :desc).page(page).per(per)
   end
+
+  def self.calculate_topic_score(topic)
+    topic.calc_score
+    topic
+  end
 end
 

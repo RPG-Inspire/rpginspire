@@ -1,13 +1,14 @@
 .card.topic-card.masonry-item
-  .card-image
-    - unless topic.image.file.nil?
-      %figure.image
-        - if topic.link.blank?
-          %a(href="#{topic_path(topic.slug)}" onclick="triggerModal(event, this);clickPreview()" data-lazy-loaded="true" data-target="lazy-loaded-modal")
-            = webp_tag topic.image.card_preview, topic.title
-        - else
-          %a(href="#{topic.link}" target="_blank" onclick="return clickLink()")
-            = webp_tag topic.image.card_preview, topic.title
+  - cache([:topic_cover_image, 'v1', topic], expires_in: 1.day) do
+    .card-image
+      - unless topic.image.file.nil?
+        %figure.image
+          - if topic.link.blank?
+            %a(href="#{topic_path(topic.slug)}" onclick="triggerModal(event, this);clickPreview()" data-lazy-loaded="true" data-target="lazy-loaded-modal")
+              = webp_tag topic.image.card_preview, topic.title
+          - else
+            %a(href="#{topic.link}" target="_blank" onclick="return clickLink()")
+              = webp_tag topic.image.card_preview, topic.title
   .card-content
     .media
       .media-left
